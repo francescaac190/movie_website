@@ -1,39 +1,22 @@
 import { useEffect, useState } from 'react'
 
-import './App.css'
+import Search from './components/Search'
 
 const App = () => {
-  return (
-    <div className='card-container'>
-      <Card  title = "Holaa"/>
-      <Card  title = "Avatar"/>
-      <Card  title = "Lion king"/>
-      <Card  title = "Holaa"/>
 
-    </div>
-  )
-}
-
-const Card = ({title}) => {
-  const [count, setCount] = useState(0);
-  const [hasLiked, setHasLiked] = useState(false);
-
-  
-  useEffect(() => {
-    console.log(`${title} has been liked: ${hasLiked}`);
-  }, [hasLiked]); // Dependencia para que el efecto se ejecute cuando cambia `hasLiked`
-  
+  const [searchTerm, setSearchTeam] = useState('');
 
   return (
-    <div className='card' onClick={() => setCount(count +1)}>
-      <h2>{title} - {count}</h2>
-      <button onClick={()=> setHasLiked(!hasLiked)}>
-        {hasLiked ? '❤️' : '🤍'}
-      </button>
-    
+    <div className='pattern'>
+     <div className='wrapper'>
+        <header>
+          <img src="./public/hero.png" alt="banner" />
+          <h1> <span className='text-gradient'> Find Movies</span> You'll Enjoy Without The Hassle</h1>
+        </header>
+        <Search searchTerm = {searchTerm} setSearchTeam = {setSearchTeam} />
+        <h1 className='text-white'>{searchTerm}</h1>
+     </div>
     </div>
   )
-}
- 
-
+} 
 export default App
